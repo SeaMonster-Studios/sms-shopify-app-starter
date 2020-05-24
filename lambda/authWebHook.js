@@ -1,0 +1,1 @@
+exports.handler = require("./authWebHook.bs").handler

@@ -1,0 +1,19 @@
+.DS_Store
+.merlin
+.bsb.lock
+npm-debug.log
+/lib/
+/node_modules/
+/bundleOutput/
+*.bs.js
+public/dist
+.env
+yarn-error.log
+
+# Local Netlify folder
+.netlify
+lambda/.webpack
+lambda/.serverless
+lambda/dist
+.graphql_ppx_cache
+temp

@@ -1,0 +1,72 @@
+org: thislogancall
+app: for-reason-lovers
+service:
+  name: for-reason-lovers
+  
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  stages:
+    - dev
+  dotenv:
+      path: ../.env
+  env:
+    appUiUrl:
+      local: http://localhost:8222
+      dev: ${env:APP_PROD_URL}
+  cors:
+    origins: 
+      - https://myshopify.com # shopify stores
+      - ${env:APP_PROD_URL}
+      - http://localhost:8222 # netlify dev
+    headers:
+      - Content-Type
+      - X-Amz-Date
+      - Authorization
+      - X-Api-Key
+      - X-Amz-Security-Token
+      - X-Amz-User-Agent  
+      - Location
+    allowCredentials: true
+
+provider:
+  name: aws 
+  runtime: nodejs12.x
+  region: eu-west-3
+  stage: ${opt:stage, 'dev'}
+  environment:
+    APP_UI_URL: ${self:custom.env.appUiUrl.${self:provider.stage}}
+
+functions:
+  authWebHook:
+    memorySize: 256
+    timeout: 29 
+    handler: authWebHook.handler 
+    events:
+      - http:
+          method: get 
+          path: /authWebHook 
+          cors: ${self:custom.cors}
+            
+  install: 
+    memorySize: 256
+    timeout: 29 
+    handler: install.handler 
+    events:
+      - http: 
+          method: get 
+          path: /install 
+          cors: ${self:custom.cors}
+            
+  getToken:
+    memorySize: 256
+    timeout: 29 
+    handler: getToken.handler 
+    events:
+      - http:
+          method: get 
+          path: /getToken 
+          cors: ${self:custom.cors}

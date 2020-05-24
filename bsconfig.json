@@ -1,0 +1,49 @@
+{
+  "name": "seamonster-studios-shopify-app-starter",
+  "reason": {
+    "react-jsx": 3
+  },
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "shared",
+      "subdirs": true
+    },
+    {
+      "dir": "lambda",
+      "subdirs": true
+    }
+  ],
+  "bsc-flags": [
+    "-bs-super-errors",
+    "-bs-no-version-header"
+  ],
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "ppx-flags": [
+    "decco/ppx",
+    "@baransu/graphql_ppx_re/ppx"
+  ],
+  "bs-dependencies": [
+    "@ahrefs/bs-dotenv",
+    "reason-react",
+    "reason-future",
+    "bs-fetch",
+    "decco",
+    "bs-query-string",
+    "@seamonster-studios/reason",
+    "reason-nodejs",
+    "reason-apollo",
+    "reason-apollo-hooks"
+  ],
+  "refmt": 3
+}

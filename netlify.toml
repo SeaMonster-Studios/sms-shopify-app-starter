@@ -1,0 +1,11 @@
+[dev]
+  framework = "#custom"
+  command = "npm run serve:dev" # Command to start your dev server
+  port = 8222 # Port that the dev server will be accessible on
+  targetPort = 8000 # Port of target app server
+  publish = "public/dist" # If you use a _redirect file, provide the path to your static content folder
+  autoLaunch = false # a Boolean value that determines if Netlify Dev launches the local server address in your browser
+
+[build] # Make sure you don't have a duplicate [build] context!
+  command = "yarn build"
+  publish = "public"
