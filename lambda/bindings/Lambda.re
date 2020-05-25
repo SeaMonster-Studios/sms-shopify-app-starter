@@ -1,18 +1,18 @@
 open Belt;
 
-type app_metadata = {provider: string};
-
-type user_metadata = {full_name: string};
-
-type user = {
-  exp: int,
-  sub: string,
-  email: string,
-  app_metadata,
-  user_metadata,
-};
-
 module Context = {
+  type app_metadata = {provider: string};
+
+  type user_metadata = {full_name: string};
+
+  type user = {
+    exp: int,
+    sub: string,
+    email: string,
+    app_metadata,
+    user_metadata,
+  };
+
   type clientContext = {user: Js.Nullable.t(user)};
   type t = {
     .

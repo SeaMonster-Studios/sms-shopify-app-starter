@@ -21,7 +21,7 @@ let query = (q, ast) =>
        })
   );
 
-let getUser = id => {
+let getShop = id => {
   let q = GetShop.make(~id, ());
   let videoAST = ApolloClient.gql(. q##query);
   query(q, videoAST);
@@ -41,7 +41,7 @@ let handler: handler(event(requestHeaders)) =
         })
       | Ok(verified) =>
         if (verified.isInstalled) {
-          getUser(verified.shop)
+          getShop(verified.shop)
           ->FutureJs.fromPromise(error => {
               error->Sentry.capturePromiseException;
               error->Js.log;
@@ -53,14 +53,14 @@ let handler: handler(event(requestHeaders)) =
                 switch (data##shops->Array.get(0)) {
                 | None =>
                   Future.make(r =>
-                    "Failed to fetch user after verification"->Error->r
+                    "Failed to fetch shop after verification"->Error->r
                   )
-                | Some(user) => Future.make(r => user->Ok->r)
+                | Some(shop) => Future.make(r => shop->Ok->r)
                 }
               | Ok(None)
               | Error(_) =>
                 Future.make(r =>
-                  "Failed to fetch user after verification"->Error->r
+                  "Failed to fetch shop after verification"->Error->r
                 )
               }
             })

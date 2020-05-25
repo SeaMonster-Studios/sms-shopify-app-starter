@@ -46,7 +46,7 @@ let mutation = (q, ast) =>
        })
   );
 
-let storeUser = (id, accessToken) => {
+let createShop = (id, accessToken) => {
   let q = CreateShop.make(~id, ~accessToken, ());
   let videoAST = ApolloClient.gql(. q##query);
   mutation(q, videoAST);
@@ -133,7 +133,7 @@ let handler: handler(event(requestHeaders)) =
             )
           ->Future.flatMapOk(({access_token, scope}) =>
               if (scope == verified.env.scopes) {
-                storeUser(shop, access_token)
+                createShop(shop, access_token)
                 ->FutureJs.fromPromise(error => {
                     error->Sentry.capturePromiseException;
                     error->Js.log;
@@ -141,7 +141,7 @@ let handler: handler(event(requestHeaders)) =
                   })
                 ->Future.mapError(error => {
                     let error: string = error->Obj.magic;
-                    {j|Failed to store user: $error|j};
+                    {j|Failed to store shop: $error|j};
                   })
                 ->Future.mapOk(_ =>
                     (

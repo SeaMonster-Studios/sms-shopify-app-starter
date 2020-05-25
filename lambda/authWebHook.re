@@ -16,7 +16,7 @@ let handler: handler(event(requestHeaders)) =
               {
                 "X-Hasura-Admin-Secret":
                   hasuraAdminSecret->Option.getWithDefault(""),
-                "X-Hasura-Role": "user",
+                "X-Hasura-Role": "shop",
                 "X-Hasura-User-Id": accessToken,
               }
               ->Obj.magic

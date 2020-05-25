@@ -16,7 +16,7 @@ This is a starter repo for quickly getting up and running with a Shopify app. La
 5. Create a new site on netlify connected to your fork of this repo. The site will not build at this point.
 6. If you'd like to use Sentry.io for error reporting create a new app and then put the provided DSN url in the .env file. Also, on the production server (netlify), be sure to set SENTRY_ENV to production. If you're working locally this should be set to something else so that errors during development are not reported.
 7. Create a new Hasura instance for your app. [You can quickly get started by deploying to heroku here.](https://hasura.io/docs/1.0/graphql/manual/getting-started/heroku-simple.html)
-    - Setup a users table with `id` (text) and `accessToken` (text) columns. The id of the user will be the shopify store. The accessToken is a permenant token shopify provides to a store during the installation process.
+    - Setup a shops table with `id` (text) and `accessToken` (text) columns. The id of the shop will be the shopify store. The accessToken is a permenant token shopify provides to a store during the installation process.
 8. Secure your graphql endpoint by following the instructions [here](https://hasura.io/docs/1.0/graphql/manual/deployment/heroku/securing-graphql-endpoint.html) and then put your HASURA_ADMIN_SECRET in the .env file.
 9. Fetch your GraphQL schema from Hasura by running `yarn get:schema`. You can also do this at a later time after your schema has changed. Commit the schema and push the changes to trigger a build on Netlify. The app should have no problem building at this point.
 10. Head back to your netlify dashboard. Once the build has completed grab the app's URL and put in the .env file. 
@@ -45,10 +45,10 @@ This is a starter repo for quickly getting up and running with a Shopify app. La
 
 ### Hasura
 - [Getting Started](https://hasura.io/docs/1.0/graphql/manual/getting-started/index.html)
-- [Setting up User Permissions](https://hasura.io/docs/1.0/graphql/manual/auth/authorization/permission-rules.html)
+- [Setting up Shop Permissions](https://hasura.io/docs/1.0/graphql/manual/auth/authorization/permission-rules.html)
 
 ## Roadmap
 
-- Implement webhook in shopify where if user deletes the app, we remove their data from hasura (https://shopify.dev/docs/admin-api/rest/reference/events/webhook?api[version]=2020-04)
+- Implement webhook in shopify where if shop deletes the app, we remove their data from hasura (https://shopify.dev/docs/admin-api/rest/reference/events/webhook?api[version]=2020-04)
 - Implement shopify payment side of things
 - Implement tailwind for styles

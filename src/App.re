@@ -7,21 +7,21 @@ module Inner = {
     let (simple, _full) =
       ApolloHooks.useQuery(ShopQueries.GetAuthedShop.definition);
     switch (simple) {
-    | Loading => "Loading hasura user"->str
+    | Loading => "Loading hasura shop"->str
     | Data(data) =>
       switch (data##shops->Array.get(0)) {
-      | None => "User not found"->str
-      | Some(user) =>
+      | None => "Shop not found"->str
+      | Some(shop) =>
         <div>
-          <h1> "User data from hasura"->str </h1>
-          <p> "Store: "->str {user##id->str} </p>
-          <p> "Shopify Access Token: "->str {user##accessToken->str} </p>
+          <h1> "Shop data from hasura"->str </h1>
+          <p> "Store: "->str {shop##id->str} </p>
+          <p> "Shopify Access Token: "->str {shop##accessToken->str} </p>
         </div>
       }
     | Error(errors) =>
       Js.log(errors);
-      "Errors fetching user from hasura"->str;
-    | NoData => "No user data in hasura"->str
+      "Errors fetching shop from hasura"->str;
+    | NoData => "No shop data in hasura"->str
     };
   };
 };
