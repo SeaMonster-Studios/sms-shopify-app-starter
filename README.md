@@ -25,13 +25,13 @@ This is a starter repo for quickly getting up and running with a Shopify app. La
 13. Provide authorization via webhook in Hasura with the `authWebHook` lambda you just deployed. You can do this by setting the `HASURA_GRAPHQL_AUTH_HOOK` environment variable within the Heroku instance to the authWebHook lambda URL provided in the terminal output in the previous step.
 14. Go back to the dashboard of your app within your partner portal. Click on App Setup.
     - Set the `App URL` to the `install` lambda's URL
-    - Set the `Whitelisted redirection URL(s)` to the `getToken` lambda's URL as well as `http://localhost:3000/dev/getToken` so that you can run the install process outside of the Shopify App Stored.
+    - Set the `Whitelisted redirection URL(s)` to the `getToken` lambda's URL as well as `http://localhost:3000/local/getToken` so that you can run the install process outside of the Shopify App Stored.
 15. Install your app
     - a. via Shopify 
         - Go to your Apps dashboard within your partner portal and click on "Test on development store" and then select the store you'd like to test the app on.
     - b. Install your app via localhost
         - Run `yarn start` to startup bucklescript, netlify dev, and serverless offline.
-        - Go to the following URL (but replace YOUR_TEST_STORE with your test store's name): http://localhost:3000/dev/install?shop=YOUR_TEST_STORE.myshopify.com&redirect=http://localhost:3000/dev/getToken
+        - Go to the following URL (but replace YOUR_TEST_STORE with your test store's name): http://localhost:3000/dev/install?shop=YOUR_TEST_STORE.myshopify.com&redirect=http://localhost:3000/local/getToken
 16. Viewing your app post installation:
     - You can view the published version within your shopify test store
     - You can view it locally, but you'll first need to look within your Hasura DB to get the access token associated with your store, then use the following URL: http://localhost:8222/?shop=YOUR_TEST_STORE.myshopify.com&accessToken=YOUR_ACCESS_TOKEN&apiKey=YOUR_SHOPIFY_APP_API_Key
