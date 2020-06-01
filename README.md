@@ -1,4 +1,4 @@
-# SMS Shopify App Stater (ReasonML, Hasura, Serverless, Netlify, Sentry)
+# SMS Shopify App Starter (ReasonML, Hasura, Serverless, Netlify, Sentry)
 
 This is a starter repo for quickly getting up and running with a Shopify app. Lambda functions are included to handle installation, authentication, and authorization in conjunction with Shopify's OAuth process and with Hasura for storing a permenant access token, shop origin, and any other details.
 
