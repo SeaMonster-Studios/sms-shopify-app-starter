@@ -9,6 +9,7 @@ This is a starter repo for quickly getting up and running with a Shopify app. La
 - Netlify for hosting static UI
 
 ## Getting Started
+The steps outlined below should be sufficient to get you up and running but in case you get stuck, a full guide can be found in [this accompanying walkthrough video](https://www.youtube.com/watch?v=YwoFLy51eyI).
 1. Clone the project and run `yarn` to install the project dependencies.
 2. Rename the .env.example file to .env.
 3. From your Shopify partner portal create a new app. Grab the API key and API secret key and put them in the .env file.
