@@ -36,7 +36,7 @@ external redirectUrl: Js.Nullable.t(string) = "SHOPIFY_REDIRECT_URL";
 let redirectUrl = redirectUrl->Js.Nullable.toOption;
 
 module GraphQL = {
-  [@bs.module "isomorphic-fetch"] external fetch: ApolloClient.fetch;
+  [@bs.module] external fetch: ApolloClient.fetch = "isomorphic-fetch";
 
   module Client = {
     open ApolloInMemoryCache;
