@@ -1,7 +1,7 @@
-org: thislogancall
-app: for-reason-lovers
+org: seamonsterstudios
+app: shopify-app-starter
 service:
-  name: for-reason-lovers
+  name: shopify-app-starter
   
 plugins:
   - serverless-webpack
