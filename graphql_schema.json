@@ -1885,7 +1885,7 @@
           {
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "users_pkey",
+            "name": "shops_pkey",
             "description": "unique or primary key constraint"
           }
         ],
