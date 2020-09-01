@@ -81,7 +81,7 @@ let handler: handler(event(requestHeaders)) =
                     ),
                 });
               | Error(message) =>
-                SS.Sentry.Node.captureMessage(message);
+                Sentry.captureMessage(message);
                 resolve(. {
                   statusCode: 500,
                   body: "Failed to fetch shop data"->Js.Nullable.return,
@@ -110,7 +110,7 @@ let handler: handler(event(requestHeaders)) =
       }
     })
     |> catch(error => {
-         error->SS.Sentry.Node.capturePromiseException;
+         error->Sentry.capturePromiseException;
          resolve({
            statusCode: 500,
            body: error->Obj.magic->Js.Nullable.return,
@@ -118,3 +118,4 @@ let handler: handler(event(requestHeaders)) =
          });
        });
   };
+

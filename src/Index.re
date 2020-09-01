@@ -5,8 +5,8 @@ open FUtils;
 switch (sentryEnv, sentryDsn) {
 | (Some(environment), Some(dsn)) =>
   if (sentryEnv->Option.getWithDefault("") == "production") {
-    SS.Sentry.(
-      Browser.make(
+    Sentry.(
+      make(
         options(
           ~dsn,
           ~environment,
@@ -40,3 +40,4 @@ let makeContainer = () => {
 };
 
 ReactDOMRe.render(<AppStore> <App /> </AppStore>, makeContainer());
+

@@ -3,7 +3,10 @@ open Lambda;
 open SharedUtils;
 
 module SS = SeamonsterStudiosReason;
-module Sentry = SS.Sentry.Node;
+module Sentry = {
+  include Sentry;
+  include SentryNode;
+};
 
 let headersBase = Lambda.headers(~allowOrigin="*", ~allowCredentials=true);
 
@@ -82,8 +85,8 @@ module FutureUtils = {
 switch (sentryEnv, sentryDsn) {
 | (Some(environment), Some(dsn)) =>
   if (sentryEnv->Option.getWithDefault("") == "production") {
-    SS.Sentry.(
-      Node.make(
+    Sentry.(
+      make(
         options(
           ~dsn,
           ~environment,
@@ -134,7 +137,7 @@ module Verify = {
       let scopes = scopes->Option.getWithDefault("");
       let hasuraAdminSecret = hasuraAdminSecret->Option.getWithDefault("");
       let appUrl = appUrl->Option.getWithDefault("");
-      SS.Sentry.Node.captureMessage(
+      Sentry.captureMessage(
         {j|App installation error. Missing one more environment variables. Actually received:
         SHOPIFY_API_KEY: $apiKey
         SHOPIFY_SECRET: $apiSecret
@@ -200,3 +203,4 @@ module Verify = {
         };
       });
 };
+

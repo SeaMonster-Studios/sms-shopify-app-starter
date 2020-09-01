@@ -41,7 +41,7 @@
     "decco",
     "bs-query-string",
     "@seamonster-studios/reason",
-    "reason-nodejs",
+    "@seamonster-studios/bs-sentry",
     "reason-apollo",
     "reason-apollo-hooks"
   ],
